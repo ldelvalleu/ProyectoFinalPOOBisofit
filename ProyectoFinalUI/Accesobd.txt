@@ -1,0 +1,1 @@
+com.mysql.jdbc.Driver,jdbc:mysql://localhost/proyectofinal?user=root&password=root
