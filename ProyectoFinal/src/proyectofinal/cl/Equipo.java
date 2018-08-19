@@ -2,7 +2,7 @@ package proyectofinal.cl;
 
 public class Equipo {
 
-    private int codigo;
+    private String codigo;
     private String nombrePais;
     private int rankingFifa;
     private String bandera;
@@ -11,7 +11,7 @@ public class Equipo {
     public Equipo() {
     }
 
-    public Equipo(int codigo, String nombrePais, int rankingFifa, String bandera, int grupo) {
+    public Equipo(String codigo, String nombrePais, int rankingFifa, String bandera, int grupo) {
         this.codigo = codigo;
         this.nombrePais = nombrePais;
         this.rankingFifa = rankingFifa;
@@ -19,11 +19,11 @@ public class Equipo {
         this.grupo = grupo;
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
@@ -62,5 +62,9 @@ public class Equipo {
     @Override
     public String toString() {
         return "Equipo{" + "codigo=" + codigo + ", nombrePais=" + nombrePais + ", rankingFifa=" + rankingFifa + ", bandera=" + bandera + ", grupo=" + grupo + '}';
+    }
+    
+    public String toStringList() {
+        return codigo + "," + nombrePais + "," + rankingFifa + "," + bandera + "," + grupo;
     }
 }

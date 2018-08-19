@@ -8,7 +8,7 @@ import proyectofinal.cl.Grupo;
 
 public class DaoGrupo {
 
-    public ArrayList<Grupo> listarGrupos() throws SQLException, Exception {
+    public ArrayList<Grupo> listarGrupos() throws SQLException, Exception, NumberFormatException {
         ArrayList<Grupo> grupos = new ArrayList<>();
         Grupo grupo = null;
         java.sql.ResultSet rs;
@@ -53,7 +53,7 @@ public class DaoGrupo {
         return miGrupo;
     }
 
-    public void actualizarGrupo(Grupo miGrupo) throws java.sql.SQLException, Exception {
+    public void actualizarGrupo(Grupo miGrupo) throws java.sql.SQLException, Exception, NumberFormatException {
         java.sql.ResultSet rs;
         ArrayList<Object> data = new ArrayList<>();
         data.add(miGrupo.getCodigo());

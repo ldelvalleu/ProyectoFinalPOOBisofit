@@ -10,7 +10,7 @@ public class GestorLiga {
     public Boolean registrarLiga(String nombre, LocalDate fechaCreacion, int mundial, Boolean estado, String tipo) throws Exception {
         int cont = 0;
         Boolean resp = false;
-        int id = listarLigas().size() + 1;
+        int id = listarLigas().size();
 
         for (Liga ligaTemp : listarLigasIn()) {
             if (ligaTemp.getId() == id) {

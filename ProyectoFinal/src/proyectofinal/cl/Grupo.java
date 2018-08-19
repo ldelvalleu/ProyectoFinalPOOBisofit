@@ -19,6 +19,12 @@ public class Grupo {
         this.mundial = mundial;
     }
 
+    public Grupo(int codigo, String nombre, int mundial) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.mundial = mundial;
+    }
+
     public int getCodigo() {
         return codigo;
     }
@@ -50,10 +56,15 @@ public class Grupo {
     public void setMundial(int mundial) {
         this.mundial = mundial;
     }
+   
 
     @Override
     public String toString() {
         return "Grupo{" + "codigo=" + codigo + ", nombre=" + nombre + ", equipos=" + equipos + ", mundial=" + mundial + '}';
+    }
+
+    public String toStringList() {
+        return codigo + "," + nombre + "," + mundial;
     }
 
 }

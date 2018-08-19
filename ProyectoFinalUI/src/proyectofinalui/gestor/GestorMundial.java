@@ -11,7 +11,7 @@ public class GestorMundial {
     public Boolean registrarMundial(int anno, String paisOrganizador, Boolean estado) throws Exception {
         int cont = 0;
         Boolean resp = false;
-        int id = listarMundiales().size() + 1;
+        int id = listarMundiales().size();
 
         for (Mundial mundialTemp : listarMundialesIn()) {
             if (mundialTemp.getId() == id) {

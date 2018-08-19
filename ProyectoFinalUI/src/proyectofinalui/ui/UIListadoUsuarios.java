@@ -37,6 +37,7 @@ public class UIListadoUsuarios extends javax.swing.JFrame {
         btnRegresar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblListaUsuarios = new javax.swing.JTable();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,14 +53,16 @@ public class UIListadoUsuarios extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Nombre", "Apellidos", "Estado", "Correo Electrónico", "Avatar", "Nombre de usuario", "Equipo Favorito", "Liga Pública", "Liga Privada"
+                "Id", "Nombre", "Apellidos", "Correo Electrónico", "Avatar", "Nombre de usuario", "Equipo Favorito", "Liga Pública", "Liga Privada"
             }
         ));
         jScrollPane2.setViewportView(tblListaUsuarios);
         if (tblListaUsuarios.getColumnModel().getColumnCount() > 0) {
-            tblListaUsuarios.getColumnModel().getColumn(3).setMaxWidth(60);
-            tblListaUsuarios.getColumnModel().getColumn(5).setMaxWidth(60);
+            tblListaUsuarios.getColumnModel().getColumn(4).setMaxWidth(60);
         }
+
+        jLabel11.setFont(new java.awt.Font("Nirmala UI", 0, 24)); // NOI18N
+        jLabel11.setText("Lista de usuarios");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,21 +70,22 @@ public class UIListadoUsuarios extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnRegresar)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 914, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(btnRegresar)
+                .addGap(257, 257, 257)
+                .addComponent(jLabel11)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 934, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnRegresar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegresar)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6))
         );
 
         pack();
@@ -154,6 +158,7 @@ public class UIListadoUsuarios extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JLabel jLabel11;
     public javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTable tblListaUsuarios;
     // End of variables declaration//GEN-END:variables

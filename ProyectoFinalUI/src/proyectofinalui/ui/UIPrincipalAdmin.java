@@ -33,6 +33,12 @@ public class UIPrincipalAdmin extends javax.swing.JFrame {
         btnRegistrarUsuario = new javax.swing.JButton();
         btnVerLigas = new javax.swing.JButton();
         btnRegistrarliga = new javax.swing.JButton();
+        btnRegistrarGrupo = new javax.swing.JButton();
+        btnVerGrupos = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        btnIngresarResultados = new javax.swing.JButton();
+        btnRegistrarEquipo = new javax.swing.JButton();
+        btnVerEquipos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,27 +84,79 @@ public class UIPrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
+        btnRegistrarGrupo.setText("Registrar grupo");
+        btnRegistrarGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarGrupoActionPerformed(evt);
+            }
+        });
+
+        btnVerGrupos.setText("Ver grupos");
+        btnVerGrupos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerGruposActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Nirmala UI", 0, 24)); // NOI18N
+        jLabel10.setText("Bienvenido");
+
+        btnIngresarResultados.setText("Ingresar resultados");
+        btnIngresarResultados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarResultadosActionPerformed(evt);
+            }
+        });
+
+        btnRegistrarEquipo.setText("Registrar equipo");
+        btnRegistrarEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarEquipoActionPerformed(evt);
+            }
+        });
+
+        btnVerEquipos.setText("Ver equipos");
+        btnVerEquipos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerEquiposActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnRegistrarliga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRegistrarMundial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRegistrarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnListarUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnListarMundiales, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                    .addComponent(btnVerLigas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(515, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(jLabel10))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnRegistrarEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRegistrarGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRegistrarliga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRegistrarMundial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRegistrarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnListarUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnListarMundiales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnVerLigas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnVerGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                            .addComponent(btnVerEquipos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(btnIngresarResultados)))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(80, 80, 80)
+                .addContainerGap()
+                .addComponent(jLabel10)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnListarUsuarios)
                     .addComponent(btnRegistrarUsuario))
@@ -110,7 +168,17 @@ public class UIPrincipalAdmin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrarliga)
                     .addComponent(btnVerLigas))
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrarGrupo)
+                    .addComponent(btnVerGrupos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVerEquipos)
+                    .addComponent(btnRegistrarEquipo))
+                .addGap(18, 18, 18)
+                .addComponent(btnIngresarResultados)
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -146,6 +214,30 @@ public class UIPrincipalAdmin extends javax.swing.JFrame {
         irARegistroLiga();
     }//GEN-LAST:event_btnRegistrarligaActionPerformed
 
+    private void btnRegistrarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarGrupoActionPerformed
+        // TODO add your handling code here:
+        irARegistroGrupo();
+    }//GEN-LAST:event_btnRegistrarGrupoActionPerformed
+
+    private void btnVerGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerGruposActionPerformed
+        // TODO add your handling code here:
+        irAListadoGrupos();
+    }//GEN-LAST:event_btnVerGruposActionPerformed
+
+    private void btnIngresarResultadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarResultadosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIngresarResultadosActionPerformed
+
+    private void btnVerEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerEquiposActionPerformed
+        // TODO add your handling code here:
+        irAListadoEquipos();
+    }//GEN-LAST:event_btnVerEquiposActionPerformed
+
+    private void btnRegistrarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEquipoActionPerformed
+        // TODO add your handling code here:
+        irARegistroEquipo();
+    }//GEN-LAST:event_btnRegistrarEquipoActionPerformed
+
     private void irARegistroUsuario() {
         UIRegistrarUsuario ui = new UIRegistrarUsuario(true);
         ui.setVisible(true);
@@ -178,6 +270,30 @@ public class UIPrincipalAdmin extends javax.swing.JFrame {
 
     private void irAListadoLigas() {
         UIListadoLigas ui = new UIListadoLigas();
+        ui.setVisible(true);
+        this.setVisible(false);
+    }
+
+    private void irARegistroGrupo() {
+        UIRegistroGrupo ui = new UIRegistroGrupo();
+        ui.setVisible(true);
+        this.setVisible(false);
+    }
+
+    private void irAListadoGrupos() {
+        UIListadoGrupos ui = new UIListadoGrupos();
+        ui.setVisible(true);
+        this.setVisible(false);
+    }
+
+    private void irARegistroEquipo() {
+        UIRegistrarEquipo ui = new UIRegistrarEquipo();
+        ui.setVisible(true);
+        this.setVisible(false);
+    }
+
+    private void irAListadoEquipos() {
+        UIListadoEquipos ui = new UIListadoEquipos();
         ui.setVisible(true);
         this.setVisible(false);
     }
@@ -218,11 +334,17 @@ public class UIPrincipalAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnIngresarResultados;
     private javax.swing.JButton btnListarMundiales;
     private javax.swing.JButton btnListarUsuarios;
+    private javax.swing.JButton btnRegistrarEquipo;
+    private javax.swing.JButton btnRegistrarGrupo;
     private javax.swing.JButton btnRegistrarMundial;
     private javax.swing.JButton btnRegistrarUsuario;
     private javax.swing.JButton btnRegistrarliga;
+    private javax.swing.JButton btnVerEquipos;
+    private javax.swing.JButton btnVerGrupos;
     private javax.swing.JButton btnVerLigas;
+    private javax.swing.JLabel jLabel10;
     // End of variables declaration//GEN-END:variables
 }

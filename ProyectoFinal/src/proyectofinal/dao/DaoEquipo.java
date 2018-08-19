@@ -14,16 +14,16 @@ public class DaoEquipo {
 
         rs = new Conector().getConector().ejecutarSQL("{call listTeams()}", true);
         while (rs.next()) {
-            equipo = new Equipo(rs.getInt("codigo"), rs.getString("nombrePais"), rs.getInt("rankingFifa"),
+            equipo = new Equipo(rs.getString("codigo"), rs.getString("nombrepais"), rs.getInt("rankingfifa"),
                     rs.getString("bandera"),
-                    rs.getInt("grupo"));
+                    rs.getInt("codigogrupo"));
             equipos.add(equipo);
         }
         rs.close();
         return equipos;
     }
 
-    public void registrarEquipo(Equipo miEquipo) throws Exception {
+    public void registrarEquipo(Equipo miEquipo) throws Exception, NumberFormatException {
         ArrayList<Object> data = new ArrayList<>();
         data.add(miEquipo.getCodigo());
         data.add(miEquipo.getNombrePais());
@@ -39,15 +39,15 @@ public class DaoEquipo {
         java.sql.ResultSet rs;
         rs = new Conector().getConector().ejecutarSQL(id, "{call searchTeam(?)}", true);
         if (rs.next()) {
-            miEquipo = new Equipo(rs.getInt("codigo"), rs.getString("nombrePais"), rs.getInt("rankingFifa"),
+            miEquipo = new Equipo(rs.getString("codigo"), rs.getString("nombrepais"), rs.getInt("rankingfifa"),
                     rs.getString("bandera"),
-                    rs.getInt("grupo"));
+                    rs.getInt("codigogrupo"));
         }
         rs.close();
         return miEquipo;
     }
 
-    public void actualizarEquipo(Equipo miEquipo) throws java.sql.SQLException, Exception {
+    public void actualizarEquipo(Equipo miEquipo) throws java.sql.SQLException, Exception, NumberFormatException{
         java.sql.ResultSet rs;
         ArrayList<Object> data = new ArrayList<>();
         data.add(miEquipo.getCodigo());

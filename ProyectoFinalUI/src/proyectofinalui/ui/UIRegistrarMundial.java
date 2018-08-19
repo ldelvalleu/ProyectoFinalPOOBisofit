@@ -150,7 +150,7 @@ public class UIRegistrarMundial extends javax.swing.JFrame {
                 this.setVisible(false);
 
             } else {
-                JOptionPane.showMessageDialog(null, "Usuario previamente registrado.");
+                JOptionPane.showMessageDialog(null, "Mundial previamente registrado.");
                 txtAnno.setText("");
                 txtPaisOrganizador.setText("");
                 txtEstado.setText("");

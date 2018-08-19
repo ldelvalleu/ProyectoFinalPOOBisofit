@@ -9,9 +9,9 @@ public class GestorUsuario {
     public GestorUsuario() {
     }
 
-    public Boolean registrarUsuario(String nombre, String apellidos, String correoElectronico, String avatar, String nombreUsuario, String equipoFavorito, String contrasenna) throws Exception {
+    public Boolean registrarUsuario(String nombre, String apellidos, String correoElectronico, String avatar, String nombreUsuario, String equipoFavorito, String contrasenna) throws Exception, IndexOutOfBoundsException{
         Boolean resp = false;
-        int id = listarUsuarios().size() + 1;
+        int id = listarUsuarios().size();
         int cont = 0;
         for (Usuario usuarioTemp : listarUsuariosIn()) {
             if (usuarioTemp.getCorreoElectronico().equals(correoElectronico)) {
@@ -26,7 +26,7 @@ public class GestorUsuario {
         return resp;
     }
 
-    public void actualizarUsuario(int id, String nombre, String apellidos, String correoElectronico, String avatar, String nombreUsuario, String equipoFavorito, String contrasenna) throws Exception {
+    public void actualizarUsuario(int id, String nombre, String apellidos, String correoElectronico, String avatar, String nombreUsuario, String equipoFavorito, String contrasenna) throws Exception, IndexOutOfBoundsException {
         Usuario miUsuario = new Usuario(id, nombre, apellidos, correoElectronico, avatar, nombreUsuario, equipoFavorito, contrasenna);
         new DaoUsuario().actualizarUsuario(miUsuario);
     }
@@ -57,7 +57,7 @@ public class GestorUsuario {
         return usuariostemp;
     }
 
-    public ArrayList<Object> iniciarSesion(String usr) throws Exception {
+    public ArrayList<Object> iniciarSesion(String usr) throws Exception, IndexOutOfBoundsException {
         ArrayList<Object> resp = new ArrayList<>();
         for (Usuario usrTemp : listarUsuariosIn()) {
             String temp = usrTemp.getCorreoElectronico() + usrTemp.getContrasenna();

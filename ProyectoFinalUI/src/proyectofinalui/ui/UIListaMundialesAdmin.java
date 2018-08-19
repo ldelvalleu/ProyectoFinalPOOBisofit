@@ -40,6 +40,7 @@ public class UIListaMundialesAdmin extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblListaMundiales = new javax.swing.JTable();
         btnRegresar = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,6 +61,9 @@ public class UIListaMundialesAdmin extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Nirmala UI", 0, 24)); // NOI18N
+        jLabel7.setText("Lista de Mundiales");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,13 +75,17 @@ public class UIListaMundialesAdmin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnRegresar)
+                .addGap(77, 77, 77)
+                .addComponent(jLabel7)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(btnRegresar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegresar)
+                    .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -154,6 +162,7 @@ public class UIListaMundialesAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JLabel jLabel7;
     public javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTable tblListaMundiales;
     // End of variables declaration//GEN-END:variables

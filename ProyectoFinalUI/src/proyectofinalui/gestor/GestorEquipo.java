@@ -9,7 +9,7 @@ public class GestorEquipo {
     public GestorEquipo() {
     }
 
-    public Boolean registrarEquipo(int codigo, String nombrePais, int rankingFifa, String bandera) throws Exception {
+    public Boolean registrarEquipo(String codigo, String nombrePais, int rankingFifa, String bandera, int codigoGrupo) throws Exception, NumberFormatException {
         int cont = 0;
         Boolean resp = false;
         for (Equipo equipoTemp : listarEquiposIn()) {
@@ -18,15 +18,15 @@ public class GestorEquipo {
             }
         }
         if (cont == 0) {
-            Equipo miEquipo = new Equipo(codigo, nombrePais, rankingFifa, bandera, 0);
+            Equipo miEquipo = new Equipo(codigo, nombrePais, rankingFifa, bandera, codigoGrupo);
             new DaoEquipo().registrarEquipo(miEquipo);
             resp = true;
         }
         return resp;
     }
 
-    public void actualizarEquipo(int codigo, String nombrePais, int rankingFifa, String bandera) throws Exception {
-        Equipo miEquipo = new Equipo(codigo, nombrePais, rankingFifa, bandera, 0);
+    public void actualizarEquipo(String codigo, String nombrePais, int rankingFifa, String bandera, int codigoGrupo) throws Exception, NumberFormatException {
+        Equipo miEquipo = new Equipo(codigo, nombrePais, rankingFifa, bandera, codigoGrupo);
         new DaoEquipo().actualizarEquipo(miEquipo);
     }
 
@@ -43,7 +43,7 @@ public class GestorEquipo {
     public ArrayList<String> listarEquipos() throws Exception {
         ArrayList<String> equiposString = new ArrayList<>();
         for (Equipo miEquipo : (new DaoEquipo()).listarEquipos()) {
-            equiposString.add(miEquipo.toString());
+            equiposString.add(miEquipo.toStringList());
         }
         return equiposString;
     }
