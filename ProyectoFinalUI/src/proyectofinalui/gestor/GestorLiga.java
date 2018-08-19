@@ -26,7 +26,7 @@ public class GestorLiga {
     }
 
     public void actualizarLiga(int id, String nombre, LocalDate fechaCreacion, int mundial, Boolean estado, String tipo) throws Exception {
-        Liga miLiga = new Liga(id, nombre, fechaCreacion, (new GestorMundial().buscarMundialIn(mundial)),estado, tipo);
+        Liga miLiga = new Liga(id, nombre, fechaCreacion, (new GestorMundial().buscarMundialIn(mundial)), estado, tipo);
         new DaoLiga().actualizarLiga(miLiga);
     }
 
@@ -38,6 +38,15 @@ public class GestorLiga {
         Liga miLiga = new DaoLiga().buscarLiga(id);
         String resp = miLiga.toString();
         return resp;
+    }
+
+    public Liga buscarLigaTipo(String tipo) throws Exception {
+        return new DaoLiga().buscarLigaTipo(tipo);
+
+    }
+
+    public Liga buscarLigaIn(int id) throws Exception {
+        return new DaoLiga().buscarLiga(id);
     }
 
     public ArrayList<String> listarLigas() throws Exception {

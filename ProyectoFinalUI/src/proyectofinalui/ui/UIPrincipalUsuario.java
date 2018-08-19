@@ -1,5 +1,11 @@
 package proyectofinalui.ui;
 
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import proyectofinalui.gestor.GestorUsuario;
+
 public class UIPrincipalUsuario extends javax.swing.JFrame {
 
     /**
@@ -14,6 +20,7 @@ public class UIPrincipalUsuario extends javax.swing.JFrame {
     public UIPrincipalUsuario(int id) throws Exception {
         initComponents();
         usuarioActivo = id;
+        llenarTabla();
     }
 
     /**
@@ -25,15 +32,27 @@ public class UIPrincipalUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btnLigas = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblCronograma = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Ligas");
+        btnLigas.setText("Ligas");
 
         jLabel10.setFont(new java.awt.Font("Nirmala UI", 0, 24)); // NOI18N
-        jLabel10.setText("Bienvenido");
+        jLabel10.setText("Cronograma de Grupo");
+
+        tblCronograma.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "", "vs", ""
+            }
+        ));
+        jScrollPane2.setViewportView(tblCronograma);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -42,26 +61,63 @@ public class UIPrincipalUsuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jButton1))
+                        .addContainerGap()
+                        .addComponent(btnLigas)
+                        .addGap(47, 47, 47)
+                        .addComponent(jLabel10))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(186, 186, 186)
-                        .addComponent(jLabel10)))
-                .addContainerGap(267, Short.MAX_VALUE))
+                        .addGap(59, 59, 59)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap(309, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(btnLigas))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(241, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void llenarTabla() {
+        try {
+            String cronogramaUsuario = new GestorUsuario().getCronograma(usuarioActivo);
+
+            String[] datos;
+            String[] datos2;
+            String[] datos3 = new String[3];
+            datos = cronogramaUsuario.split(":");
+            for (String dataTemp : datos) {
+                datos2 = dataTemp.split(",");
+                datos3[0] = datos2[0] + " (" + datos2[1] + ")";
+                datos3[1] = " vs ";
+                datos3[2] = datos2[2] + " (" + datos2[3] + ")";
+
+                DefaultTableModel modelo = (DefaultTableModel) tblCronograma.getModel();
+                modelo.addRow(datos3);
+            }
+
+        } catch (Exception e) {
+            try {
+                throw e;
+            } catch (Exception ex) {
+                Logger.getLogger(UIListaMundialesAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    private void regresar() {
+        UIPrincipalAdmin ui = new UIPrincipalAdmin();
+        ui.setVisible(true);
+        this.setVisible(false);
+    }
 
     /**
      * @param args the command line arguments
@@ -99,7 +155,9 @@ public class UIPrincipalUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnLigas;
     private javax.swing.JLabel jLabel10;
+    public javax.swing.JScrollPane jScrollPane2;
+    public javax.swing.JTable tblCronograma;
     // End of variables declaration//GEN-END:variables
 }

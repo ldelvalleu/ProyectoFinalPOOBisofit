@@ -57,6 +57,26 @@ public class DaoLiga {
         rs.close();
         return miLiga;
     }
+    
+    public Liga buscarLigaTipo(String tipo) throws java.sql.SQLException, Exception {
+        Liga miLiga = null;
+        java.sql.ResultSet rs;
+        rs = new Conector().getConector().ejecutarSQL(tipo, "{call searchLeagueByType(?)}", true);
+        if (rs.next()) {
+            ArrayList<Usuario> usuariosTemp = new ArrayList<>();
+            for (Usuario tmpUsuario : new DaoUsuario().listarUsuarios()) {
+                if (tmpUsuario.getLigaPublica() == rs.getInt("id") || tmpUsuario.getLigaPrivada() == rs.getInt("id")) {
+                    usuariosTemp.add(tmpUsuario);
+                }
+            }
+            miLiga = new Liga(rs.getInt("id"), rs.getString("nombre"), usuariosTemp, (rs.getDate("fechacreacion").toLocalDate()), new DaoMundial().buscarMundial(rs.getInt("codigoMundial")), rs.getBoolean("estado"), rs.getString("tipo"));
+
+        }
+        rs.close();
+        return miLiga;
+    }
+    
+    
 
     public void actualizarLiga(Liga miLiga) throws java.sql.SQLException, Exception {
         java.sql.ResultSet rs;

@@ -2,16 +2,16 @@ package proyectofinal.cl;
 
 public class Usuario {
 
-    int id;
-    String nombre;
-    String apellidos;
-    String correoElectronico;
-    String avatar;
-    String nombreUsuario;
-    String equipoFavorito;
-    String contrasenna;
-    int ligaPublica;
-    int ligaPrivada;
+    private int id;
+    private String nombre;
+    private String apellidos;
+    private String correoElectronico;
+    private String avatar;
+    private String nombreUsuario;
+    private String equipoFavorito;
+    private String contrasenna;
+    private int ligaPublica;
+    private int ligaPrivada;
 
     public Usuario() {
     }
@@ -39,8 +39,6 @@ public class Usuario {
         this.equipoFavorito = equipoFavorito;
         this.contrasenna = contrasenna;
     }
-    
-    
 
     public int getId() {
         return id;
@@ -124,11 +122,11 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return id+"," +nombre + "," + apellidos + "," + correoElectronico + "," + avatar + "," + nombreUsuario + "," + equipoFavorito + "," + contrasenna + "," + ligaPublica + "," + ligaPrivada;
+        return id + "," + nombre + "," + apellidos + "," + correoElectronico + "," + avatar + "," + nombreUsuario + "," + equipoFavorito + "," + contrasenna + "," + ligaPublica + "," + ligaPrivada;
     }
-    
+
     public String toStringList() {
-        return id+"," +nombre + "," + apellidos + "," + correoElectronico + "," + avatar + "," + nombreUsuario + "," + equipoFavorito + "," + ligaPublica + "," + ligaPrivada;
+        return id + "," + nombre + "," + apellidos + "," + correoElectronico + "," + avatar + "," + nombreUsuario + "," + equipoFavorito + "," + ligaPublica + "," + ligaPrivada;
     }
 
 }

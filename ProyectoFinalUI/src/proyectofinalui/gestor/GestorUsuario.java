@@ -1,6 +1,7 @@
 package proyectofinalui.gestor;
 
 import java.util.ArrayList;
+import proyectofinal.cl.Grupo;
 import proyectofinal.cl.Usuario;
 import proyectofinal.dao.DaoUsuario;
 
@@ -9,7 +10,7 @@ public class GestorUsuario {
     public GestorUsuario() {
     }
 
-    public Boolean registrarUsuario(String nombre, String apellidos, String correoElectronico, String avatar, String nombreUsuario, String equipoFavorito, String contrasenna) throws Exception, IndexOutOfBoundsException{
+    public Boolean registrarUsuario(String nombre, String apellidos, String correoElectronico, String avatar, String nombreUsuario, String equipoFavorito, String contrasenna) throws Exception, IndexOutOfBoundsException {
         Boolean resp = false;
         int id = listarUsuarios().size();
         int cont = 0;
@@ -19,7 +20,9 @@ public class GestorUsuario {
             }
         }
         if (cont == 0) {
+            
             Usuario miUsuario = new Usuario(id, nombre, apellidos, correoElectronico, avatar, nombreUsuario, equipoFavorito, contrasenna);
+            miUsuario.setLigaPublica(new GestorLiga().buscarLigaTipo("Publica").getId());
             new DaoUsuario().registrarUsuario(miUsuario);
             resp = true;
         }
@@ -39,6 +42,10 @@ public class GestorUsuario {
         Usuario miUsuario = new DaoUsuario().buscarUsuario(id);
         String resp = miUsuario.toString();
         return resp;
+    }
+
+    public Usuario buscarUsuarioIn(int id) throws Exception {
+        return new DaoUsuario().buscarUsuario(id);
     }
 
     public ArrayList<String> listarUsuarios() throws Exception {
@@ -73,5 +80,11 @@ public class GestorUsuario {
             }
         }
         return resp;
+    }
+
+    public String getCronograma(int usr) throws Exception {
+        ArrayList<Grupo> grupo = new GestorMundial().buscarMundialIn(new GestorLiga().buscarLigaIn(buscarUsuarioIn(usr).getLigaPublica()).getIdMundial()).getGrupos();
+        grupo.get(0).generarCronograma();
+        return grupo.get(0).getCronograma();
     }
 }
