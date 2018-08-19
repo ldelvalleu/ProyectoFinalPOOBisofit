@@ -26,6 +26,23 @@ public class Liga {
         this.tipo = tipo;
     }
 
+    public Liga(int id, String nombre, LocalDate fechaCreacion, Mundial mundial, Boolean estado, String tipo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.fechaCreacion = fechaCreacion;
+        this.mundial = mundial;
+        this.estado = estado;
+        this.tipo = tipo;
+    }
+
+    public Liga(int id, String nombre, LocalDate fechaCreacion, Boolean estado, String tipo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.fechaCreacion = fechaCreacion;
+        this.estado = estado;
+        this.tipo = tipo;
+    }
+
     public int getId() {
         return id;
     }
@@ -62,6 +79,10 @@ public class Liga {
         return mundial;
     }
 
+    public int getIdMundial() {
+        return mundial.getId();
+    }
+
     public void setMundial(Mundial mundial) {
         this.mundial = mundial;
     }
@@ -87,4 +108,7 @@ public class Liga {
         return "Liga{" + "id=" + id + ", nombre=" + nombre + ", participantes=" + participantes + ", fechaCreacion=" + fechaCreacion + ", mundial=" + mundial + ", estado=" + estado + ", tipo=" + tipo + '}';
     }
 
+    public String toStringList() {
+        return id + "," + nombre + "," + fechaCreacion + "," + mundial.getId() + "," + estado + "," + tipo;
+    }
 }

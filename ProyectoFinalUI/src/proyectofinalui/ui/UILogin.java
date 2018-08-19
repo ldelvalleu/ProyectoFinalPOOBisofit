@@ -152,32 +152,31 @@ public class UILogin extends javax.swing.JFrame {
     private void iniciarSesion() {
         try {
             Boolean resp = false;
-            String usr = txtEmail.getText() + "," + txtContrasenna.getText();
-            ArrayList<String> tempusrs = new GestorUsuario().listarUsuariosLogin();
-            int usrid = 0;
-            for (String miUsuario : tempusrs) {
-                String[] usrLogin = miUsuario.split(",");
-                if ((txtEmail.getText()).equals(usrLogin[0]) && (txtContrasenna.getText()).equals(usrLogin[1])) {
-                    resp = true;
-                    usrid = Integer.parseInt(usrLogin[2]);
-                }
-            }
-            if (resp) {
-                if (usr.equals("admin@admin.com,admin12345")) {
-                    UIPrincipalAdmin ui = new UIPrincipalAdmin();
-                    ui.setVisible(true);
-                    this.setVisible(false);
+            String usr = txtEmail.getText() + txtContrasenna.getText();
+            ArrayList<Object> respUI = new GestorUsuario().iniciarSesion(usr);
+            if (respUI.get(0) instanceof Boolean) {
+                Boolean booleanTemp = (Boolean) respUI.get(0);
+                if (booleanTemp) {
+                    Boolean booleanTempAdmin = (Boolean) respUI.get(2);
+                    if (booleanTempAdmin) {
+                        UIPrincipalAdmin ui = new UIPrincipalAdmin();
+                        ui.setVisible(true);
+                        this.setVisible(false);
+                    } else {
+                        int usrAct = (Integer) respUI.get(1);
+                        UIPrincipalUsuario ui = new UIPrincipalUsuario(usrAct);
+                        ui.setVisible(true);
+                        this.setVisible(false);
+                    }
                 } else {
-                    UIPrincipalUsuario ui = new UIPrincipalUsuario(usrid);
-                    ui.setVisible(true);
-                    this.setVisible(false);
+                    txtEmail.setText("");
+                    txtContrasenna.setText("");
+                    JOptionPane.showMessageDialog(null, "Correo electrónico o contraseña incorrecta.");
                 }
-            } else {
-                txtEmail.setText("");
-                txtContrasenna.setText("");
-                JOptionPane.showMessageDialog(null, "Correo electrónico o contraseña incorrecta.");
             }
         } catch (Exception e) {
+            txtEmail.setText("");
+            txtContrasenna.setText("");
             JOptionPane.showMessageDialog(null, e);
         }
     }

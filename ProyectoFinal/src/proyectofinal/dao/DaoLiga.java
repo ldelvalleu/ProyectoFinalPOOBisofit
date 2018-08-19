@@ -33,7 +33,7 @@ public class DaoLiga {
         data.add(miLiga.getId());
         data.add(miLiga.getNombre());
         data.add(miLiga.getFechaCreacion());
-        data.add(miLiga.getMundial().getId());
+        data.add(miLiga.getIdMundial());
         data.add(miLiga.getEstado());
         data.add(miLiga.getTipo());
 

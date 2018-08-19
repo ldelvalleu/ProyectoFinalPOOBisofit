@@ -44,7 +44,7 @@ public class GestorUsuario {
     public ArrayList<String> listarUsuarios() throws Exception {
         ArrayList<String> usuariosString = new ArrayList<>();
         for (Usuario miUsuario : (new DaoUsuario()).listarUsuarios()) {
-            usuariosString.add(miUsuario.toString());
+            usuariosString.add(miUsuario.toStringList());
         }
         return usuariosString;
     }
@@ -57,11 +57,21 @@ public class GestorUsuario {
         return usuariostemp;
     }
 
-    public ArrayList<String> listarUsuariosLogin() throws Exception {
-        ArrayList<String> usuariosString = new ArrayList<>();
-        for (Usuario miUsuario : (new DaoUsuario()).listarUsuarios()) {
-            usuariosString.add(miUsuario.getCorreoElectronico() + "," + miUsuario.getContrasenna() + "," + miUsuario.getId());
+    public ArrayList<Object> iniciarSesion(String usr) throws Exception {
+        ArrayList<Object> resp = new ArrayList<>();
+        for (Usuario usrTemp : listarUsuariosIn()) {
+            String temp = usrTemp.getCorreoElectronico() + usrTemp.getContrasenna();
+            if (temp.equals(usr)) {
+                resp.add(true);
+                resp.add(usrTemp.getId());
+                if (usr.equals("admin@admin.comadmin12345")) {
+                    resp.add(true);
+                } else {
+                    resp.add(false);
+
+                }
+            }
         }
-        return usuariosString;
+        return resp;
     }
 }

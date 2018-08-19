@@ -19,8 +19,15 @@ public class UIRegistrarUsuario extends javax.swing.JFrame {
     /**
      * Creates new form UIRegistrarUsuario
      */
+    private Boolean booltry = false;
+
     public UIRegistrarUsuario() {
         initComponents();
+    }
+
+    public UIRegistrarUsuario(Boolean bool) {
+        initComponents();
+        booltry = bool;
     }
 
     /**
@@ -290,9 +297,17 @@ public class UIRegistrarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void regresar() {
-        UILogin ui = new UILogin();
-        ui.setVisible(true);
-        this.setVisible(false);
+        if (!booltry) {
+            UILogin ui = new UILogin();
+            ui.setVisible(true);
+            this.setVisible(false);
+        }
+        else{
+            UIPrincipalAdmin ui = new UIPrincipalAdmin();
+            ui.setVisible(true);
+            this.setVisible(false);
+        }
+
     }
 
     private void registrarUsuario() throws Exception, NumberFormatException {
@@ -324,7 +339,7 @@ public class UIRegistrarUsuario extends javax.swing.JFrame {
 
             }
         } catch (Exception e) {
-            throw e;
+            JOptionPane.showMessageDialog(null, e);
         }
 
     }

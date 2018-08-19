@@ -8,22 +8,23 @@ import proyectofinal.cl.Mundial;
 
 public class DaoMundial {
 
-    public ArrayList<Mundial> listarMundials() throws SQLException, Exception {
+    public ArrayList<Mundial> listarMundiales() throws SQLException, Exception {
         ArrayList<Mundial> mundiales = new ArrayList<>();
         Mundial mundial = null;
         java.sql.ResultSet rs;
         rs = new Conector().getConector().ejecutarSQL("{call listWorldCups()}", true);
         while (rs.next()) {
             ArrayList<Grupo> gruposTemp = new ArrayList<>();
-            for(Grupo miGrupo: new DaoGrupo().listarGrupos()){
-                if(miGrupo.getMundial() == rs.getInt("id")){
+            for (Grupo miGrupo : new DaoGrupo().listarGrupos()) {
+                if (miGrupo.getMundial() == rs.getInt("id")) {
                     gruposTemp.add(miGrupo);
                 }
             }
             mundial = new Mundial(rs.getInt("id"), rs.getInt("anno"), rs.getString("paisorganizador"), rs.getBoolean("estado"), gruposTemp);
             mundiales.add(mundial);
-            rs.close();
+
         }
+        rs.close();
         return mundiales;
     }
 
@@ -43,8 +44,8 @@ public class DaoMundial {
         rs = new Conector().getConector().ejecutarSQL(id, "{call searchWorldCup(?)}", true);
         if (rs.next()) {
             ArrayList<Grupo> gruposTemp = new ArrayList<>();
-            for(Grupo miGrupo: new DaoGrupo().listarGrupos()){
-                if(miGrupo.getMundial() == rs.getInt("id")){
+            for (Grupo miGrupo : new DaoGrupo().listarGrupos()) {
+                if (miGrupo.getMundial() == rs.getInt("id")) {
                     gruposTemp.add(miGrupo);
                 }
             }

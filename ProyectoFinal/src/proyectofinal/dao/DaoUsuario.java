@@ -75,26 +75,22 @@ public class DaoUsuario {
         String dataS[];
         dataS = usr.split(",");
 
-        try {
-            rs = (new Conector()).getConector().ejecutarSQL(dataS[0], dataS[1], "{call `searchUserEmailPass`(?,?)}", true);
-            if (rs.next()) {
-                miUsuario = new Usuario(rs.getInt("id"),
-                        rs.getString("nombre"),
-                        rs.getString("apellidos"),
-                        rs.getString("correoelectronico"),
-                        rs.getString("avatar"),
-                        rs.getString("nombreusuario"),
-                        rs.getString("equipofavorito"),
-                        rs.getString("contrasenna"),
-                        rs.getInt("ligapublica"),
-                        rs.getInt("ligaprivada")
-                );
-            }
-            rs.close();
-            return miUsuario;
-        } catch (Exception e) {
-            throw e;
+        rs = (new Conector()).getConector().ejecutarSQL(dataS[0], dataS[1], "{call `searchUserEmailPass`(?,?)}", true);
+        if (rs.next()) {
+            miUsuario = new Usuario(rs.getInt("id"),
+                    rs.getString("nombre"),
+                    rs.getString("apellidos"),
+                    rs.getString("correoelectronico"),
+                    rs.getString("avatar"),
+                    rs.getString("nombreusuario"),
+                    rs.getString("equipofavorito"),
+                    rs.getString("contrasenna"),
+                    rs.getInt("ligapublica"),
+                    rs.getInt("ligaprivada")
+            );
         }
+        rs.close();
+        return miUsuario;
     }
 
     public void actualizarUsuario(Usuario miUsuario) throws java.sql.SQLException, Exception {

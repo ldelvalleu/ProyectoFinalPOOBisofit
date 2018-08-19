@@ -124,7 +124,11 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", correoElectronico=" + correoElectronico + ", avatar=" + avatar + ", nombreUsuario=" + nombreUsuario + ", equipoFavorito=" + equipoFavorito + ", contrasenna=" + contrasenna + ", ligaPublica=" + ligaPublica + ", ligaPrivada=" + ligaPrivada + '}';
+        return id+"," +nombre + "," + apellidos + "," + correoElectronico + "," + avatar + "," + nombreUsuario + "," + equipoFavorito + "," + contrasenna + "," + ligaPublica + "," + ligaPrivada;
+    }
+    
+    public String toStringList() {
+        return id+"," +nombre + "," + apellidos + "," + correoElectronico + "," + avatar + "," + nombreUsuario + "," + equipoFavorito + "," + ligaPublica + "," + ligaPrivada;
     }
 
 }

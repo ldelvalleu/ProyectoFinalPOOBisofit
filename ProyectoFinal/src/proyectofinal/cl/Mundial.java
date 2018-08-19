@@ -21,6 +21,13 @@ public class Mundial {
         this.grupos = grupos;
     }
 
+    public Mundial(int id, int anno, String paisOrganizador, Boolean estado) {
+        this.id = id;
+        this.anno = anno;
+        this.paisOrganizador = paisOrganizador;
+        this.estado = estado;
+    }
+
     public int getId() {
         return id;
     }
@@ -64,5 +71,9 @@ public class Mundial {
     @Override
     public String toString() {
         return "Mundial{" + "id=" + id + ", anno=" + anno + ", paisOrganizador=" + paisOrganizador + ", estado=" + estado + ", grupos=" + grupos + '}';
+    }
+    
+     public String toStringList() {
+        return id + "," + anno + "," + paisOrganizador + "," + estado;
     }
 }

@@ -27,153 +27,161 @@ public class UIPrincipalAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        btnListarEquipos = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        btnRegistrarMundial = new javax.swing.JButton();
+        btnListarUsuarios = new javax.swing.JButton();
+        btnListarMundiales = new javax.swing.JButton();
+        btnRegistrarUsuario = new javax.swing.JButton();
+        btnVerLigas = new javax.swing.JButton();
+        btnRegistrarliga = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Registrar equipo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrarMundial.setText("Registrar mundial");
+        btnRegistrarMundial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRegistrarMundialActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Registrar mundial");
-
-        jButton3.setText("Registrar liga");
-
-        jButton4.setText("Registrar grupo");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnListarUsuarios.setText("Ver usuarios");
+        btnListarUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnListarUsuariosActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        jLabel1.setText("Bievenido");
-
-        btnListarEquipos.setText("Listado de equipos");
-        btnListarEquipos.addActionListener(new java.awt.event.ActionListener() {
+        btnListarMundiales.setText("Ver mundiales");
+        btnListarMundiales.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListarEquiposActionPerformed(evt);
+                btnListarMundialesActionPerformed(evt);
             }
         });
 
-        jButton7.setText("Listado de grupos");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrarUsuario.setText("Registrar usuario");
+        btnRegistrarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnRegistrarUsuarioActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Listado de Mundiales");
-
-        jButton8.setText("Listado de ligas");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        btnVerLigas.setText("Ver ligas");
+        btnVerLigas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btnVerLigasActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(232, 232, 232)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnListarEquipos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton4)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnListarEquipos)
-                    .addComponent(jButton7)
-                    .addComponent(jButton6)
-                    .addComponent(jButton8))
-                .addContainerGap(217, Short.MAX_VALUE))
-        );
+        btnRegistrarliga.setText("Registrar liga");
+        btnRegistrarliga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarligaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(70, 70, 70)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnRegistrarliga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRegistrarMundial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRegistrarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnListarUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnListarMundiales, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                    .addComponent(btnVerLigas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(515, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnListarUsuarios)
+                    .addComponent(btnRegistrarUsuario))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrarMundial)
+                    .addComponent(btnListarMundiales))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrarliga)
+                    .addComponent(btnVerLigas))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnRegistrarMundialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarMundialActionPerformed
+        irARegistroMundial();
+    }//GEN-LAST:event_btnRegistrarMundialActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btnListarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarUsuariosActionPerformed
 
-    private void btnListarEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarEquiposActionPerformed
-        listarEquipos();
-    }//GEN-LAST:event_btnListarEquiposActionPerformed
+        irAListadoUsuarios();
+    }//GEN-LAST:event_btnListarUsuariosActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btnRegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+        irARegistroUsuario();
+    }//GEN-LAST:event_btnRegistrarUsuarioActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void btnListarMundialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarMundialesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
-    
-    private void listarEquipos(){
-        UIListaEquiposAdmin ui = new UIListaEquiposAdmin();
+        irAListadoMundiales();
+    }//GEN-LAST:event_btnListarMundialesActionPerformed
+
+    private void btnVerLigasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerLigasActionPerformed
+        // TODO add your handling code here:
+        irAListadoLigas();
+    }//GEN-LAST:event_btnVerLigasActionPerformed
+
+    private void btnRegistrarligaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarligaActionPerformed
+        // TODO add your handling code here:
+        irARegistroLiga();
+    }//GEN-LAST:event_btnRegistrarligaActionPerformed
+
+    private void irARegistroUsuario() {
+        UIRegistrarUsuario ui = new UIRegistrarUsuario(true);
         ui.setVisible(true);
         this.setVisible(false);
     }
+
+    private void irAListadoUsuarios() {
+        UIListadoUsuarios ui = new UIListadoUsuarios();
+        ui.setVisible(true);
+        this.setVisible(false);
+    }
+
+    private void irARegistroMundial() {
+        UIRegistrarMundial ui = new UIRegistrarMundial();
+        ui.setVisible(true);
+        this.setVisible(false);
+    }
+
+    private void irAListadoMundiales() {
+        UIListaMundialesAdmin ui = new UIListaMundialesAdmin();
+        ui.setVisible(true);
+        this.setVisible(false);
+    }
+
+    private void irARegistroLiga() {
+        UIRegistrarLiga ui = new UIRegistrarLiga();
+        ui.setVisible(true);
+        this.setVisible(false);
+    }
+
+    private void irAListadoLigas() {
+        UIListadoLigas ui = new UIListadoLigas();
+        ui.setVisible(true);
+        this.setVisible(false);
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -210,15 +218,11 @@ public class UIPrincipalAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnListarEquipos;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton btnListarMundiales;
+    private javax.swing.JButton btnListarUsuarios;
+    private javax.swing.JButton btnRegistrarMundial;
+    private javax.swing.JButton btnRegistrarUsuario;
+    private javax.swing.JButton btnRegistrarliga;
+    private javax.swing.JButton btnVerLigas;
     // End of variables declaration//GEN-END:variables
 }
