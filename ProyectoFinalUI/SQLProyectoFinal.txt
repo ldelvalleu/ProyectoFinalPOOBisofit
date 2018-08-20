@@ -1,0 +1,300 @@
+CREATE SCHEMA `proyectofinal` ;
+
+
+CREATE TABLE `proyectofinal`.`usuario` (
+  `id` INT NOT NULL,
+  `nombre` VARCHAR(45) NOT NULL,
+  `apellidos` VARCHAR(45) NOT NULL,
+  `correoelectronico` VARCHAR(45) NOT NULL,
+  `avatar` VARCHAR(45) NOT NULL,
+  `nombreusuario` VARCHAR(45) NOT NULL,
+  `equipofavorito` VARCHAR(45) NOT NULL,
+  `contrasenna` VARCHAR(45) NOT NULL,
+  `ligapublica` INT NULL,
+  `ligaprivada` INT NULL, `puntos` INT NOT NULL ,
+  PRIMARY KEY (`id`));
+
+
+CREATE TABLE `proyectofinal`.`mundial` (
+  `id` INT NOT NULL,
+  `anno` INT NOT NULL,
+  `paisOrganizador` VARCHAR(45) NOT NULL,
+  `estado` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
+
+
+CREATE TABLE `proyectofinal`.`liga` (
+  `id` INT NOT NULL,
+  `nombre` VARCHAR(45) NOT NULL,
+  `fechacreacion` DATETIME NOT NULL,
+  `codigomundial` INT NULL,
+  `estado` TINYINT NOT NULL,
+  `tipo` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
+
+
+CREATE TABLE `proyectofinal`.`grupo` (
+  `codigo` INT NOT NULL,
+  `nombre` VARCHAR(45) NOT NULL,
+  `idmundial` INT NULL,
+  PRIMARY KEY (`codigo`));
+
+
+CREATE TABLE `proyectofinal`.`equipo` (
+  `codigo` VARCHAR(45) NOT NULL,
+  `nombrepais` VARCHAR(45) NOT NULL,
+  `rankingfifa` VARCHAR(45) NOT NULL,
+  `bandera` VARCHAR(45) NOT NULL,
+  `codigogrupo` INT NOT NULL,
+  PRIMARY KEY (`codigo`));
+
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteUser`(
+pId int)
+BEGIN
+delete from  usuario where id = pId;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertUser`(
+pId int,
+pNombre varchar(45),
+pApellidos varchar(45),
+pCorreoElectronico varchar(45),
+pAvatar varchar(45),
+pNombreUsuario varchar(45),
+pEquipoFavorito varchar(45),
+pContrasenna varchar(45),
+pLigaPublica int,
+pLigaPrivada int,
+pPuntos int
+)
+BEGIN
+insert into usuario(id, nombre, apellidos, correoelectronico, avatar, nombreusuario, equipofavorito, contrasenna, ligapublica,ligaprivada, puntos)
+values (pId, pNombre, pApellidos, pCorreoElectronico, pAvatar, pNombreUsuario, pEquipoFavorito, pContrasenna, pLigaPublica, pLigaPrivada, pPuntos);
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `listUsers`()
+BEGIN
+SELECT id, nombre, apellidos, correoelectronico, avatar, nombreusuario, equipofavorito, contrasenna, ligapublica, ligaprivada, puntos from usuario;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `searchUser`(
+pId int)
+BEGIN
+SELECT id, nombre, apellidos, correoelectronico, avatar, nombreusuario, equipofavorito, contrasenna, ligapublica, ligaprivada, puntos from usuario where id = pId;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE updateUser(
+pId int,
+pNombre varchar(45),
+pApellidos varchar(45),
+pCorreoElectronico varchar(45),
+pAvatar varchar(45),
+pNombreUsuario varchar(45),
+pEquipoFavorito varchar(45),
+pContrasenna varchar(45), 
+pLigaPublica  int, 
+pLigaPrivada  int, 
+pPuntos int
+)
+BEGIN
+update usuario set nombre = pNombre, apellidos = setApellidos, correoelectronico = pCorreoElectronico, avatar = pAvatar, nombreusuario = pNombreUsuario, equipofavorito = pNombreEquipoFavorito, contrasenna = pContrasenna, ligapublica = pLigaPublica, ligaprivada = pLigaPrivada, puntos = pLigaPrivada, puntos = pPuntos WHERE id = pId;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `searchUserEmailPass`(
+pCorreoElectronico varchar(45),
+pContrasenna varchar(45)
+)
+BEGIN
+SELECT id, nombre, apellidos, correoelectronico, avatar, nombreusuario, equipofavorito, contrasenna, ligapublica, ligaprivada, puntos from usuario where correoelectronico = pCorreoElectronico AND contrasenna = pContrasenna;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateUserLeague`(
+pId int, 
+pLigaPrivada int
+)
+BEGIN
+update usuario set ligaprivada = pLigaPrivada where id = pId;
+END
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateUserPoints`(
+pId int, 
+pPuntos int
+)
+BEGIN
+update usuario set puntos = pPuntos where id = pId;
+END
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertLeague`(
+pId int,
+pNombre varchar(45),
+pFechaCreacion datetime,
+pCodigoMundial int,
+pEstado tinyint,
+pTipo varchar(45)
+)
+BEGIN
+insert into liga(id,nombre,fechacreacion,codigomundial,estado,tipo)
+values (pId, pNombre, pFechaCreacion, pCodigoMundial, pEstado, pTipo);
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE listLeagues()
+BEGIN
+SELECT id,nombre,fechacreacion,codigomundial,estado,tipo from liga;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `searchLeague`(
+pId int)
+BEGIN
+SELECT id, nombre, fechacreacion, codigomundial,estado, tipo from liga where id = pId;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE updateLeague(
+pId int,
+pNombre varchar(45),
+pFechaCreacion datetime,
+pCodigoMundial int,
+pEstado tinyint,
+pTipo varchar(45)
+)
+BEGIN
+update liga set nombre = pNombre, fechacreacion = pFechaCreacion, codigomundial = pCodigoMundial, estado = pEstado, tipo = pTipo where id = pId;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE deleteLeague(
+pId int)
+BEGIN
+delete from liga where id = pId;
+END
+
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `searchLeagueByType`(
+pTipo varchar(45)
+)
+BEGIN
+SELECT id, nombre, fechacreacion, codigomundial,estado, tipo from liga where tipo = pTipo;
+END
+
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE insertWorldCup(
+pId int,
+pAnno int,
+pPaisOrganizador varchar(45),
+pEstado tinyint
+)
+BEGIN
+insert into mundial(id,anno,paisorganizador,estado)
+values (pId, pAnno, pPaisOrganizador, pEstado);
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE listWorldCups()
+BEGIN
+SELECT id,anno,paisorganizador,estado from mundial;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `searchWorldCup`(
+pId int)
+BEGIN
+SELECT id, anno,paisorganizador,estado from mundial where id = pId;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE updateWorldCup(
+pId int,
+pAnno int,
+pPaisOrganizador varchar(45),
+pEstado tinyint
+)
+BEGIN
+update mundial set anno = pAnno, paisorganizador = pPaisOrganizador, estado = pEstado where id = pId;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE deleteWorldCup(
+pId int)
+BEGIN
+delete from mundial where id = pId;
+END
+
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE insertGroup(
+pCodigo int,
+pNombre varchar(45),
+pIdMundial int
+)
+BEGIN
+insert into grupo(codigo, nombre, idmundial)
+values (pCodigo, pNombre, pIdMundial);
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE listGroups()
+BEGIN
+SELECT codigo, nombre, idmundial from grupo;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `searchGroup`(
+pCodigo int)
+BEGIN
+SELECT codigo, nombre, idmundial from grupo where codigo = pcodigo;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateGroup`(
+pCodigo int, 
+pNombre varchar(45),
+pIdMundial int
+)
+BEGIN
+update grupo set nombre = pNombre, idmundial = pIdMundial where codigo = pCodigo;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE deleteGroup(
+pCodigo int)
+BEGIN
+delete from grupo where codigo = pCodigo;
+END
+
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertTeam`(
+pCodigo varchar(45),
+pNombrePais varchar(45),
+pRankingFifa int,
+pBandera varchar(45),
+pCodigoGrupo int
+)
+BEGIN
+insert into equipo(codigo, nombrepais, rankingfifa, bandera, codigogrupo)
+values (pCodigo, pNombrePais, pRankingFifa, pBandera, pCodigoGrupo);
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE listTeams()
+BEGIN
+SELECT codigo,nombrepais,rankingfifa,bandera,codigogrupo from equipo;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `searchTeam`(
+pCodigo varchar(45))
+BEGIN
+SELECT codigo,nombrepais,rankingfifa,bandera,codigogrupo from equipo where codigo = pcodigo;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateTeam`(
+pCodigo varchar(45),
+pNombrePais varchar(45),
+pRankingFifa int,
+pBandera varchar(45),
+pCodigoGrupo int
+)
+BEGIN
+update equipo set nombrepais = pNombrePais, rankingfifa = pRankingFifa, bandera = pBandera, codigogrupo = pCodigoGrupo where codigo = pCodigo;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE deleteTeam(
+pCodigo int)
+BEGIN
+delete from equipo where codigo = pCodigo;
+END
