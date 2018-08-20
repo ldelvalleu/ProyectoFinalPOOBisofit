@@ -8,9 +8,11 @@ package proyectofinalui.ui;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import proyectofinalui.gestor.GestorLiga;
+import proyectofinalui.gestor.GestorUsuario;
 
 /**
  *
@@ -18,11 +20,27 @@ import proyectofinalui.gestor.GestorLiga;
  */
 public class UIRegistrarLiga extends javax.swing.JFrame {
 
+    private int usuarioActivo;
+
     /**
      * Creates new form UIRegistrarLiga
      */
+    private Boolean booltry = false;
+
     public UIRegistrarLiga() {
         initComponents();
+    }
+
+    public UIRegistrarLiga(Boolean bool) {
+        initComponents();
+        booltry = bool;
+    }
+
+    public UIRegistrarLiga(int usr, Boolean bool) {
+        initComponents();
+        usuarioActivo = usr;
+        booltry = bool;
+
     }
 
     /**
@@ -34,7 +52,7 @@ public class UIRegistrarLiga extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnRegistrarLiga = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         dateFechaCreacion = new com.toedter.calendar.JDateChooser();
@@ -42,18 +60,16 @@ public class UIRegistrarLiga extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtMundial = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         txtEstado = new javax.swing.JTextField();
-        txtTipo = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnRegistrarLiga = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnRegistrarLiga.setText("Cancelar");
-        btnRegistrarLiga.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarLigaActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
 
@@ -65,12 +81,10 @@ public class UIRegistrarLiga extends javax.swing.JFrame {
 
         jLabel5.setText("Estado");
 
-        jLabel6.setText("Tipo");
-
-        jButton1.setText("Registrar liga");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrarLiga.setText("Registrar liga");
+        btnRegistrarLiga.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRegistrarLigaActionPerformed(evt);
             }
         });
 
@@ -90,14 +104,9 @@ public class UIRegistrarLiga extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(btnRegistrarLiga)))
+                    .addComponent(btnCancelar)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel4))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -105,12 +114,11 @@ public class UIRegistrarLiga extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(77, 77, 77)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1)
+                            .addComponent(btnRegistrarLiga)
                             .addComponent(dateFechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtEstado, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtTipo, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtMundial, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,32 +141,27 @@ public class UIRegistrarLiga extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))))
-                .addGap(26, 26, 26)
+                    .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(btnRegistrarLiga))
-                .addContainerGap(64, Short.MAX_VALUE))
+                    .addComponent(btnRegistrarLiga)
+                    .addComponent(btnCancelar))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        registrarLiga();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void btnRegistrarLigaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarLigaActionPerformed
         // TODO add your handling code here:
-        regresar();
+        registrarLiga();
     }//GEN-LAST:event_btnRegistrarLigaActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        regresar();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void registrarLiga() {
         String nombreS = txtNombre.getText();
@@ -169,32 +172,52 @@ public class UIRegistrarLiga extends javax.swing.JFrame {
         if (txtEstado.getText().equals("activo") || txtEstado.getText().equals("Activo")) {
             estadoB = true;
         }
-        String tipoS = txtTipo.getText();
-
         try {
-            Boolean resp = new GestorLiga().registrarLiga(nombreS, fecha, mundialI, estadoB, tipoS);
-            if (resp) {
+            ArrayList<Object> resp = new ArrayList<>();
+            if (!booltry) {
+                resp = new GestorLiga().registrarLiga(nombreS, fecha, mundialI, estadoB, "Privada");
+                new GestorUsuario().registrarLigaPrivadaAUsuario(usuarioActivo, (int) resp.get(1));
+            } else {
+                resp = new GestorLiga().registrarLiga(nombreS, fecha, mundialI, estadoB, "Publica");
+            }
+            if ((Boolean) resp.get(0)) {
                 JOptionPane.showMessageDialog(null, "Liga registrada correctamente.");
-                UIPrincipalAdmin ui = new UIPrincipalAdmin();
-                ui.setVisible(true);
-                this.setVisible(false);
-
+                if (!booltry) {
+                    UIPrincipalUsuario ui = new UIPrincipalUsuario(usuarioActivo);
+                    ui.setVisible(true);
+                    this.setVisible(false);
+                } else {
+                    UIPrincipalAdmin ui = new UIPrincipalAdmin();
+                    ui.setVisible(true);
+                    this.setVisible(false);
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Liga previamente registrada.");
                 txtEstado.setText("");
                 txtMundial.setText("");
                 txtNombre.setText("");
-                txtTipo.setText("");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
+
         }
     }
 
     private void regresar() {
-        UIPrincipalAdmin ui = new UIPrincipalAdmin();
-        ui.setVisible(true);
-        this.setVisible(false);
+        try {
+            if (!booltry) {
+                UILigasUsuario ui = new UILigasUsuario(usuarioActivo);
+                ui.setVisible(true);
+                this.setVisible(false);
+            } else {
+                UIPrincipalAdmin ui = new UIPrincipalAdmin();
+                ui.setVisible(true);
+                this.setVisible(false);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+
+        }
     }
 
     /**
@@ -233,18 +256,16 @@ public class UIRegistrarLiga extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnRegistrarLiga;
     private com.toedter.calendar.JDateChooser dateFechaCreacion;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtMundial;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTipo;
     // End of variables declaration//GEN-END:variables
 }

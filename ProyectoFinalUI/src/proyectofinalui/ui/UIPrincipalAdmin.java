@@ -263,7 +263,7 @@ public class UIPrincipalAdmin extends javax.swing.JFrame {
     }
 
     private void irARegistroLiga() {
-        UIRegistrarLiga ui = new UIRegistrarLiga();
+        UIRegistrarLiga ui = new UIRegistrarLiga(true);
         ui.setVisible(true);
         this.setVisible(false);
     }

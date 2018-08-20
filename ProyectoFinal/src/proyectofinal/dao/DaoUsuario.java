@@ -23,7 +23,8 @@ public class DaoUsuario {
                     rs.getString("equipofavorito"),
                     rs.getString("contrasenna"),
                     rs.getInt("ligapublica"),
-                    rs.getInt("ligaprivada")
+                    rs.getInt("ligaprivada"),
+                    rs.getInt("puntos")
             );
             usuarios.add(usuario);
         }
@@ -44,8 +45,9 @@ public class DaoUsuario {
         data.add(miUsuario.getContrasenna());
         data.add(miUsuario.getLigaPublica());
         data.add(miUsuario.getLigaPrivada());
+        data.add(miUsuario.getPuntos());
 
-        (new Conector()).getConector().ejecutarSQL(data, "{call insertUser(?,?,?,?,?,?,?,?,?,?)}");
+        (new Conector()).getConector().ejecutarSQL(data, "{call insertUser(?,?,?,?,?,?,?,?,?,?,?)}");
     }
 
     public Usuario buscarUsuario(int id) throws java.sql.SQLException, Exception {
@@ -62,7 +64,8 @@ public class DaoUsuario {
                     rs.getString("equipofavorito"),
                     rs.getString("contrasenna"),
                     rs.getInt("ligapublica"),
-                    rs.getInt("ligaprivada")
+                    rs.getInt("ligaprivada"),
+                    rs.getInt("puntos")
             );
         }
         rs.close();
@@ -86,7 +89,8 @@ public class DaoUsuario {
                     rs.getString("equipofavorito"),
                     rs.getString("contrasenna"),
                     rs.getInt("ligapublica"),
-                    rs.getInt("ligaprivada")
+                    rs.getInt("ligaprivada"),
+                    rs.getInt("puntos")
             );
         }
         rs.close();
@@ -106,9 +110,19 @@ public class DaoUsuario {
         data.add(miUsuario.getContrasenna());
         data.add(miUsuario.getLigaPublica());
         data.add(miUsuario.getLigaPrivada());
+        data.add(miUsuario.getPuntos());
 
-        (new Conector()).getConector().ejecutarSQL(data, "{call updateUser(?,?,?,?,?,?,?,?,?,?)}");
+        (new Conector()).getConector().ejecutarSQL(data, "{call updateUser(?,?,?,?,?,?,?,?,?,?,?)}");
 
+    }
+
+    public void actualizarLigaUsuario(int id, int ligaprivada) throws java.sql.SQLException, Exception {
+
+        new Conector().getConector().ejecutarSQL(id, ligaprivada, "{call `updateUserLeague`(?,?)}");
+    }
+
+    public void actualizarPuntosUsuario(int id, int puntos) throws java.sql.SQLException, Exception {
+        new Conector().getConector().ejecutarSQL(id, puntos, "{call `updateUserPoints`(?,?)}");
     }
 
     public void borrarUsuario(int id) throws java.sql.SQLException, Exception {

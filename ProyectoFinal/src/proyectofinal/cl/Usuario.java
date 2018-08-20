@@ -12,11 +12,12 @@ public class Usuario {
     private String contrasenna;
     private int ligaPublica;
     private int ligaPrivada;
+    private int puntos;
 
     public Usuario() {
     }
 
-    public Usuario(int id, String nombre, String apellidos, String correoElectronico, String avatar, String nombreUsuario, String equipoFavorito, String contrasenna, int ligaPublica, int ligaPrivada) {
+    public Usuario(int id, String nombre, String apellidos, String correoElectronico, String avatar, String nombreUsuario, String equipoFavorito, String contrasenna, int ligaPublica, int ligaPrivada, int puntos) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -27,9 +28,10 @@ public class Usuario {
         this.contrasenna = contrasenna;
         this.ligaPublica = ligaPublica;
         this.ligaPrivada = ligaPrivada;
+        this.puntos = puntos;
     }
 
-    public Usuario(int id, String nombre, String apellidos, String correoElectronico, String avatar, String nombreUsuario, String equipoFavorito, String contrasenna) {
+    public Usuario(int id, String nombre, String apellidos, String correoElectronico, String avatar, String nombreUsuario, String equipoFavorito, String contrasenna, int puntos) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -38,6 +40,7 @@ public class Usuario {
         this.nombreUsuario = nombreUsuario;
         this.equipoFavorito = equipoFavorito;
         this.contrasenna = contrasenna;
+        this.puntos = puntos;
     }
 
     public int getId() {
@@ -120,13 +123,23 @@ public class Usuario {
         this.ligaPrivada = ligaPrivada;
     }
 
+    public int getPuntos() {
+        return puntos;
+    }
+
+    public void setPuntos(int puntos) {
+        this.puntos = puntos;
+    }
+    
+    
+
     @Override
     public String toString() {
         return id + "," + nombre + "," + apellidos + "," + correoElectronico + "," + avatar + "," + nombreUsuario + "," + equipoFavorito + "," + contrasenna + "," + ligaPublica + "," + ligaPrivada;
     }
 
     public String toStringList() {
-        return id + "," + nombre + "," + apellidos + "," + correoElectronico + "," + avatar + "," + nombreUsuario + "," + equipoFavorito + "," + ligaPublica + "," + ligaPrivada;
+        return id + "," + nombre + "," + apellidos + "," + correoElectronico + "," + avatar + "," + nombreUsuario + "," + equipoFavorito + "," + ligaPublica + "," + ligaPrivada + "," + puntos;
     }
 
 }

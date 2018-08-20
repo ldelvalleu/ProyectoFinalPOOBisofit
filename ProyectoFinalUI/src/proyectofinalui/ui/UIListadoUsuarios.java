@@ -53,12 +53,14 @@ public class UIListadoUsuarios extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Nombre", "Apellidos", "Correo Electrónico", "Avatar", "Nombre de usuario", "Equipo Favorito", "Liga Pública", "Liga Privada"
+                "Id", "Nombre", "Apellidos", "Correo Electrónico", "Avatar", "Nombre de usuario", "Equipo Favorito", "Liga Pública", "Liga Privada", "Puntos"
             }
         ));
         jScrollPane2.setViewportView(tblListaUsuarios);
         if (tblListaUsuarios.getColumnModel().getColumnCount() > 0) {
+            tblListaUsuarios.getColumnModel().getColumn(0).setMaxWidth(40);
             tblListaUsuarios.getColumnModel().getColumn(4).setMaxWidth(60);
+            tblListaUsuarios.getColumnModel().getColumn(9).setMaxWidth(60);
         }
 
         jLabel11.setFont(new java.awt.Font("Nirmala UI", 0, 24)); // NOI18N
@@ -70,11 +72,14 @@ public class UIListadoUsuarios extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnRegresar)
-                .addGap(257, 257, 257)
-                .addComponent(jLabel11)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 934, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnRegresar)
+                        .addGap(257, 257, 257)
+                        .addComponent(jLabel11)
+                        .addGap(0, 482, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,9 +88,9 @@ public class UIListadoUsuarios extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegresar)
                     .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();

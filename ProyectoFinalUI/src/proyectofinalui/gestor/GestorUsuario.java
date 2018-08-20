@@ -10,7 +10,9 @@ public class GestorUsuario {
     public GestorUsuario() {
     }
 
-    public Boolean registrarUsuario(String nombre, String apellidos, String correoElectronico, String avatar, String nombreUsuario, String equipoFavorito, String contrasenna) throws Exception, IndexOutOfBoundsException {
+    public Boolean registrarUsuario(String nombre, String apellidos, String correoElectronico,
+            String avatar, String nombreUsuario, String equipoFavorito, String contrasenna)
+            throws Exception, IndexOutOfBoundsException {
         Boolean resp = false;
         int id = listarUsuarios().size();
         int cont = 0;
@@ -20,8 +22,9 @@ public class GestorUsuario {
             }
         }
         if (cont == 0) {
-            
-            Usuario miUsuario = new Usuario(id, nombre, apellidos, correoElectronico, avatar, nombreUsuario, equipoFavorito, contrasenna);
+
+            Usuario miUsuario = new Usuario(id, nombre, apellidos, correoElectronico, avatar,
+                    nombreUsuario, equipoFavorito, contrasenna, 100);
             miUsuario.setLigaPublica(new GestorLiga().buscarLigaTipo("Publica").getId());
             new DaoUsuario().registrarUsuario(miUsuario);
             resp = true;
@@ -29,8 +32,15 @@ public class GestorUsuario {
         return resp;
     }
 
-    public void actualizarUsuario(int id, String nombre, String apellidos, String correoElectronico, String avatar, String nombreUsuario, String equipoFavorito, String contrasenna) throws Exception, IndexOutOfBoundsException {
-        Usuario miUsuario = new Usuario(id, nombre, apellidos, correoElectronico, avatar, nombreUsuario, equipoFavorito, contrasenna);
+    public void actualizarUsuario(int id, String nombre, String apellidos, String correoElectronico,
+            String avatar, String nombreUsuario, String equipoFavorito, String contrasenna)
+            throws Exception, IndexOutOfBoundsException {
+        Usuario miUsuario = new Usuario(id, nombre, apellidos, correoElectronico, avatar,
+                nombreUsuario, equipoFavorito, contrasenna, buscarUsuarioIn(id).getPuntos());
+        miUsuario.setLigaPublica(new GestorLiga().buscarLigaTipo("Publica").getId());
+        if (buscarUsuarioIn(id).getLigaPrivada() != 0) {
+            miUsuario.setLigaPrivada(new GestorLiga().buscarLigaTipo("Privada").getId());
+        }
         new DaoUsuario().actualizarUsuario(miUsuario);
     }
 
@@ -82,9 +92,52 @@ public class GestorUsuario {
         return resp;
     }
 
-    public String getCronograma(int usr) throws Exception {
-        ArrayList<Grupo> grupo = new GestorMundial().buscarMundialIn(new GestorLiga().buscarLigaIn(buscarUsuarioIn(usr).getLigaPublica()).getIdMundial()).getGrupos();
-        grupo.get(0).generarCronograma();
-        return grupo.get(0).getCronograma();
+    public String getCronograma(int usr, int grupo) throws Exception {
+        ArrayList<Grupo> grupos = new GestorMundial().buscarMundialIn(new GestorLiga().buscarLigaIn(buscarUsuarioIn(usr).getLigaPublica()).getIdMundial()).getGrupos();
+        grupos.get(grupo).generarCronograma();
+        return grupos.get(grupo).getCronograma();
     }
+
+    public String getResultado(int usr, int partido, int grupo) throws Exception {
+        ArrayList<Grupo> grupos = new GestorMundial().buscarMundialIn(new GestorLiga().
+                buscarLigaIn(buscarUsuarioIn(usr).getLigaPublica())
+                .getIdMundial()).getGrupos();
+        grupos.get(grupo-1).generarCronograma();
+        return grupos.get(grupo-1).getCronogramaIn().getResultado(partido);
+    }
+
+    public String getNombreEquipoPrediccion(int usr, int partido) throws Exception {
+        ArrayList<Grupo> grupos = new GestorMundial().buscarMundialIn(new GestorLiga().buscarLigaIn(buscarUsuarioIn(usr).getLigaPublica()).getIdMundial()).getGrupos();
+        return grupos.get(partido).getNombre();
+    }
+
+    public String getLigaPublica(int usr) throws Exception {
+        return new GestorLiga().buscarLigaIn(buscarUsuarioIn(usr).getLigaPublica()).toStringList();
+    }
+
+    public String getLigaPrivada(int usr) throws Exception {
+        return new GestorLiga().buscarLigaIn(buscarUsuarioIn(usr).getLigaPrivada()).toStringList();
+    }
+
+    public int revGrupo(int usr) throws Exception {
+        return new GestorMundial().buscarMundialIn(new GestorLiga().buscarLigaIn(buscarUsuarioIn(usr).
+                getLigaPublica()).getIdMundial()).getGrupos().size();
+    }
+
+    public void registrarLigaPrivadaAUsuario(int id, int ligaprivada) throws Exception,
+            IndexOutOfBoundsException {
+        new DaoUsuario().actualizarLigaUsuario(id, ligaprivada);
+    }
+    
+    public void actualizarPuntosUsuario(int id, int puntos, Boolean operacion) throws Exception,
+            IndexOutOfBoundsException {
+        if(operacion){
+            new DaoUsuario().actualizarPuntosUsuario(id, (buscarUsuarioIn(id).getPuntos() + puntos));
+        }
+        else{
+            new DaoUsuario().actualizarPuntosUsuario(id, (buscarUsuarioIn(id).getPuntos() - puntos));
+        }
+        
+    }
+    
 }

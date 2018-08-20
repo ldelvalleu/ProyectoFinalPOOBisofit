@@ -9,7 +9,6 @@ public class Grupo {
     private ArrayList<Equipo> equipos;
     private int mundial;
     private Cronograma cronograma;
-    private String resultados;
 
     public Grupo() {
     }
@@ -19,14 +18,12 @@ public class Grupo {
         this.nombre = nombre;
         this.equipos = equipos;
         this.mundial = mundial;
-        this.resultados = "";
     }
 
     public Grupo(int codigo, String nombre, int mundial) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.mundial = mundial;
-        this.resultados = "";
     }
 
     public int getCodigo() {
@@ -69,16 +66,8 @@ public class Grupo {
         return cronograma.toString();
     }
 
-    public void agregarResultado(String res) {
-        if ("".equals(resultados)) {
-            resultados = res;
-        } else {
-            resultados = resultados + "," + res;
-        }
-    }
-
-    public String getResultados() {
-        return resultados;
+    public Cronograma getCronogramaIn() {
+        return cronograma;
     }
 
     @Override

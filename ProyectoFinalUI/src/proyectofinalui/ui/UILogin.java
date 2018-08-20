@@ -164,7 +164,7 @@ public class UILogin extends javax.swing.JFrame {
                         this.setVisible(false);
                     } else {
                         int usrAct = (Integer) respUI.get(1);
-                        UIPrincipalUsuario ui = new UIPrincipalUsuario(usrAct);
+                        UIPrincipalUsuario ui = new UIPrincipalUsuario((int) respUI.get(1));
                         ui.setVisible(true);
                         this.setVisible(false);
                     }

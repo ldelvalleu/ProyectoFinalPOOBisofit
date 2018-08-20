@@ -7,10 +7,10 @@ import proyectofinal.dao.DaoLiga;
 
 public class GestorLiga {
 
-    public Boolean registrarLiga(String nombre, LocalDate fechaCreacion, int mundial, Boolean estado, String tipo) throws Exception {
+    public ArrayList<Object> registrarLiga(String nombre, LocalDate fechaCreacion, int mundial, Boolean estado, String tipo) throws Exception {
         int cont = 0;
-        Boolean resp = false;
-        int id = listarLigas().size();
+        ArrayList<Object> resp = new ArrayList<>();
+        int id = listarLigas().size() + 1;
 
         for (Liga ligaTemp : listarLigasIn()) {
             if (ligaTemp.getId() == id) {
@@ -20,7 +20,8 @@ public class GestorLiga {
         if (cont == 0) {
             Liga miLiga = new Liga(id, nombre, fechaCreacion, (new GestorMundial().buscarMundialIn(mundial)), estado, tipo);
             new DaoLiga().registrarLiga(miLiga);
-            resp = true;
+            resp.add(true);
+            resp.add(id);
         }
         return resp;
     }
@@ -63,5 +64,13 @@ public class GestorLiga {
             ligaestemp.add(miLiga);
         }
         return ligaestemp;
+    }
+
+    public ArrayList<String> listarLigasUsr() throws Exception {
+        ArrayList<String> ligaesString = new ArrayList<>();
+        for (Liga miLiga : (new DaoLiga()).listarLigas()) {
+            ligaesString.add(miLiga.toStringList());
+        }
+        return ligaesString;
     }
 }
